@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-// Deployed to Goerli at 0x362402d876C9E7411a5081675302E244Dc96Ce4c
+// Deployed to Goerli at 0x9c40f0Ee6b98F3AD0E45abF982C4A6188f77479b
 
 import "hardhat/console.sol";
 
@@ -64,6 +64,14 @@ contract BuyMeACoffee {
    function withdrawTips() public {
        require(owner.send(address(this).balance));
    }
+
+   /**
+    * @dev allow the owner to change the address they withdraw the tips to
+     */  
+
+    function changeWithdrawAddress(address payable _newOwner) public {
+        require(_newOwner.send(address(this).balance));
+    }
 
    /**
     * @dev retrieve all the memos received and stored on the blockchain
